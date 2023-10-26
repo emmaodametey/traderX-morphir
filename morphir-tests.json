@@ -13,62 +13,50 @@
             ],
             [
                 [
-                    "order"
-                ]
-            ],
-            [
-                "get",
-                "id"
-            ]
-        ],
-        [
-            {
-                "inputs": [
-                    [
-                        "buyAccepted",
-                        "yes",
-                        "yes",
-                        1,
-                        1
-                    ]
-                ],
-                "expectedOutput": "yes",
-                "description": "buy accepted"
-            }
-        ]
-    ],
-    [
-        [
-            [
-                [
-                    "trader",
-                    "x"
-                ],
-                [
                     "trade",
-                    "service"
+                    "order",
+                    "controller"
                 ]
             ],
             [
-                [
-                    "order"
-                ]
-            ],
-            [
-                "lockin",
-                "price"
+                "create",
+                "trade",
+                "order"
             ]
         ],
         [
             {
                 "inputs": [
-                    [
-                        "limit",
-                        23
-                    ],
-                    null
+                    {
+                        "id": "1234567",
+                        "security": [
+                            "tickerValid",
+                            "MSFT"
+                        ],
+                        "quantity": 1000,
+                        "accountId": [
+                            "accountValid",
+                            12345
+                        ],
+                        "side": "SELL"
+                    }
                 ],
-                "expectedOutput": 23,
+                "expectedOutput": [
+                    "ok",
+                    {
+                        "id": "1234567",
+                        "security": [
+                            "tickerValid",
+                            "MSFT"
+                        ],
+                        "quantity": 1000,
+                        "accountId": [
+                            "accountValid",
+                            12345
+                        ],
+                        "side": "SELL"
+                    }
+                ],
                 "description": ""
             }
         ]

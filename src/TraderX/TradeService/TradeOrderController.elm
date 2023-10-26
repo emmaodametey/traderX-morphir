@@ -1,20 +1,20 @@
 module TraderX.TradeService.TradeOrderController exposing (..)
 
-type alias TradeOrder = 
-    { 
-        id: String,
-        security: Ticker,
-        quantity: Int,
-        accountId: Account,
-        side: String
-    }
 type Ticker
-    = Valid String
-    | Invalid
+    = TickerInvalid
+    | TickerValid String
 
 type Account
-    = Valid Int
-    | Invalid
+    = AccountInvalid 
+    | AccountValid Int
+
+type alias TradeOrder =
+    { id : String
+    , security : Ticker
+    , quantity : Int
+    , accountId : Account
+    , side : String
+    }
 
 type ResourceNotFound
     = AccountNotFound
@@ -22,42 +22,24 @@ type ResourceNotFound
 
 type alias Url = 
     String
-
+    
 createTradeOrder : TradeOrder -> Result ResourceNotFound TradeOrder
 createTradeOrder tradeOrder =
     let 
         validTicker =
             case tradeOrder.security of
-                Valid _ -> Ok TradeOrder
-                Invalid -> Err TickerNotFound
+                TickerValid _ -> 
+                    Ok tradeOrder
+                TickerInvalid -> 
+                    Err TickerNotFound
         validAccount =
             case tradeOrder.accountId of
-                Valid _ -> Ok TradeOrder
-                Invalid -> Err AccountNotFound
+                AccountValid _ -> 
+                    Ok tradeOrder
+                AccountInvalid -> 
+                    Err AccountNotFound
 
     in
     case validTicker of
         Err _ -> validTicker
         Ok _ -> validAccount 
-
--- validateTicker : String -> Result String Bool
--- validateTicker ticker =
---     if String.isEmpty ticker then
---         Err "Invalid"
---     else
---         Ok True
-
--- validateAccount : Int -> Result String Bool
--- validateAccount accountId =
---     case accountId of
---         0 -> Ok True
---         _ -> Err "Resource not found in Account service"     
-
--- createTradeOrder : TradeOrder -> Result String Bool
--- createTradeOrder tradeOrder =
---     let 
---         validTicker = validateTicker tradeOrder.security
---     in
---     case validTicker of
---         Err _ -> validTicker
---         Ok _ -> validateAccount tradeOrder.accountId

@@ -1,0 +1,76 @@
+[
+    [
+        [
+            [
+                [
+                    "trader",
+                    "x"
+                ],
+                [
+                    "trade",
+                    "service"
+                ]
+            ],
+            [
+                [
+                    "order"
+                ]
+            ],
+            [
+                "get",
+                "id"
+            ]
+        ],
+        [
+            {
+                "inputs": [
+                    [
+                        "buyAccepted",
+                        "yes",
+                        "yes",
+                        1,
+                        1
+                    ]
+                ],
+                "expectedOutput": "yes",
+                "description": "buy accepted"
+            }
+        ]
+    ],
+    [
+        [
+            [
+                [
+                    "trader",
+                    "x"
+                ],
+                [
+                    "trade",
+                    "service"
+                ]
+            ],
+            [
+                [
+                    "order"
+                ]
+            ],
+            [
+                "lockin",
+                "price"
+            ]
+        ],
+        [
+            {
+                "inputs": [
+                    [
+                        "limit",
+                        23
+                    ],
+                    null
+                ],
+                "expectedOutput": 23,
+                "description": ""
+            }
+        ]
+    ]
+]

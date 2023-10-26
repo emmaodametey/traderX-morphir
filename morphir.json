@@ -1,7 +1,4 @@
 {
     "name": "TraderX.TradeService",
-    "sourceDirectory": "src",
-    "exposedModules": [
-        "TradeOrderController"
-    ]
+    "sourceDirectory": "src"
 }

@@ -1,6 +1,10 @@
 {
-    "src\\TraderX\\TradeService\\TradeOrderController.elm": "1100d0c0dc354cc6829d570026b8ea46",
+    "src\\TraderX\\TradeService\\Order.elm": "4605f94bc0baea9617d4862cf807e7df",
+    "src\\TraderX\\TradeService\\TradeOrderController.elm": "aeeab66cd2b00b060ec6a3e865f30be6",
     "src\\TraderX\\TradeService\\Shared\\AccountId.elm": "5d31c9d1d08d815035667c4c61ae7c21",
+    "src\\TraderX\\TradeService\\Shared\\Price.elm": "365e272e0a4f29877bb0623dda6b2119",
+    "src\\TraderX\\TradeService\\Shared\\Product.elm": "2ba3c762379d3d7963b13d47b287a58f",
+    "src\\TraderX\\TradeService\\Shared\\Quantity.elm": "97362b06988938fb31ce6badd8fe42ac",
     "src\\TraderX\\TradeService\\Shared\\Security.elm": "5d1f56a782a881cd67df534fdd3f605b",
     "src\\TraderX\\TradeService\\Shared\\TradeSide.elm": "6fb81f26cb13a9eca91d43139299d684"
 }

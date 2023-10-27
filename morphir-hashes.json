@@ -7,5 +7,5 @@
     "src\\TraderX\\TradeService\\Shared\\Quantity.elm": "97362b06988938fb31ce6badd8fe42ac",
     "src\\TraderX\\TradeService\\Shared\\Security.elm": "5d1f56a782a881cd67df534fdd3f605b",
     "src\\TraderX\\TradeService\\Shared\\TradeSide.elm": "6fb81f26cb13a9eca91d43139299d684",
-    "src\\TraderX\\TradeProcessor\\TradeService.elm": "e4246418aaf1f40088a39e1cf38a4770"
+    "src\\TraderX\\TradeProcessor\\TradeService.elm": "347ad861b0a45dff067361f82a80a4f5"
 }

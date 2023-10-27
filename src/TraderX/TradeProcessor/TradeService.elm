@@ -25,16 +25,19 @@ type alias TradeBookingResult =
     }
 
 type alias Trade = 
-    {id : String
+    { id : String
     , security : String
     , quantity : Int
     , accountId : Int
     , side : TradeSide
-    , state : String --change back to state
+    , state : TradeState --change back to state
     , updated : String 
     , created : String
     }
-
+type PositionStatus 
+    = Found
+    | NotFound
+   
 type alias Position =
     { serialVersionUID : Int
     , accountId : Int
@@ -49,16 +52,18 @@ type TradeState
     | Settled 
     | Canceled
 
-type alias New = String
--- type alias Processing = String
--- type alias Settled = String
--- type alias Canceled = String 
-
 type TradeSide 
     = Buy
     | Sell
 
-processTrade : TradeOrder -> TradeBookingResult
+findByAccountIdAndSecurity : TradeOrder.accountId -> TradeOrder.security -> Maybe Position
+findByAccountIdAndSecurity accountId security =
+
+selectPosition : PositionStatus -> Maybe Position
+selectPosition status =
+    Nothing
+
+processTrade : TradeOrder -> Maybe TradeBookingResult
 processTrade order = 
     let 
         trade = 
@@ -67,11 +72,13 @@ processTrade order =
             , quantity = order.quantity
             , accountId = 1
             , side = order.side
-            , state =  (TradeState New)
+            , state =  New
             , updated = "updated"
             , created = "created"
             }
     in
-    order
+    Nothing
+    
+
 
 

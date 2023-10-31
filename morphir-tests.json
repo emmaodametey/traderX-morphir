@@ -1,0 +1,208 @@
+[
+    [
+        [
+            [
+                [
+                    "trader",
+                    "x"
+                ]
+            ],
+            [
+                [
+                    "trade",
+                    "processor"
+                ],
+                [
+                    "trade",
+                    "service"
+                ]
+            ],
+            [
+                "calculate",
+                "quantity"
+            ]
+        ],
+        [
+            {
+                "inputs": [
+                    [
+                        "buy"
+                    ],
+                    2
+                ],
+                "expectedOutput": 2,
+                "description": "Buy side"
+            },
+            {
+                "inputs": [
+                    [
+                        "sell"
+                    ],
+                    3
+                ],
+                "expectedOutput": -3,
+                "description": "Sell Side"
+            }
+        ]
+    ],
+    [
+        [
+            [
+                [
+                    "trader",
+                    "x"
+                ]
+            ],
+            [
+                [
+                    "trade",
+                    "processor"
+                ],
+                [
+                    "trade",
+                    "service"
+                ]
+            ],
+            [
+                "process",
+                "trade"
+            ]
+        ],
+        [
+            {
+                "inputs": [
+                    {
+                        "id": "12",
+                        "security": "MSFT",
+                        "quantity": 100,
+                        "accountId": 1,
+                        "side": [
+                            "buy"
+                        ]
+                    }
+                ],
+                "expectedOutput": {
+                    "trade": {
+                        "id": "12",
+                        "security": "MSFT",
+                        "quantity": 100,
+                        "accountId": 1,
+                        "side": [
+                            "buy"
+                        ],
+                        "state": [
+                            "new"
+                        ],
+                        "updated": "updated",
+                        "created": "created"
+                    },
+                    "position": {
+                        "serialVersionUID": 1,
+                        "accountId": 1,
+                        "security": "MSFT",
+                        "quantity": 100
+                    }
+                },
+                "description": "test quantity is added if side is buy"
+            },
+            {
+                "inputs": [
+                    {
+                        "id": "22",
+                        "security": "APPL",
+                        "quantity": 20,
+                        "accountId": 2,
+                        "side": [
+                            "sell"
+                        ]
+                    }
+                ],
+                "expectedOutput": {
+                    "trade": {
+                        "id": "22",
+                        "security": "APPL",
+                        "quantity": 20,
+                        "accountId": 1,
+                        "side": [
+                            "sell"
+                        ],
+                        "state": [
+                            "new"
+                        ],
+                        "updated": "updated",
+                        "created": "created"
+                    },
+                    "position": {
+                        "serialVersionUID": 1,
+                        "accountId": 2,
+                        "security": "APPL",
+                        "quantity": -20
+                    }
+                },
+                "description": "test quantity is deducted if side is sell"
+            }
+        ]
+    ],
+    [
+        [
+            [
+                [
+                    "trader",
+                    "x"
+                ]
+            ],
+            [
+                [
+                    "trade",
+                    "service"
+                ],
+                [
+                    "trade",
+                    "order",
+                    "controller"
+                ]
+            ],
+            [
+                "create",
+                "trade",
+                "order"
+            ]
+        ],
+        [
+            {
+                "inputs": [
+                    {
+                        "id": "12",
+                        "security": [
+                            "tickerValid",
+                            "ss"
+                        ],
+                        "quantity": 12,
+                        "accountId": [
+                            "accountValid",
+                            12
+                        ],
+                        "side": "buy"
+                    }
+                ],
+                "expectedOutput": [
+                    "ok",
+                    {
+                        "id": "12",
+                        "security": [
+                            "tickerValid",
+                            "ss"
+                        ],
+                        "quantity": 12,
+                        "accountId": [
+                            "accountValid",
+                            12
+                        ],
+                        "side": "buy"
+                    }
+                ],
+                "description": ""
+            }
+        ]
+    ]
+]

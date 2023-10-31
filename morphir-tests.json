@@ -1,0 +1,87 @@
+[
+    [
+        [
+            [
+                [
+                    "trader",
+                    "x"
+                ]
+            ],
+            [
+                [
+                    "trade",
+                    "service"
+                ],
+                [
+                    "trade",
+                    "order",
+                    "controller"
+                ]
+            ],
+            [
+                "create",
+                "trade",
+                "order"
+            ]
+        ],
+        [
+            {
+                "inputs": [
+                    {
+                        "id": "12345",
+                        "security": [
+                            "tickerValid",
+                            "MSFT"
+                        ],
+                        "quantity": 1000,
+                        "accountId": [
+                            "accountValid",
+                            1234
+                        ],
+                        "side": "BUY"
+                    }
+                ],
+                "expectedOutput": [
+                    "ok",
+                    {
+                        "id": "12345",
+                        "security": [
+                            "tickerValid",
+                            "MSFT"
+                        ],
+                        "quantity": 1000,
+                        "accountId": [
+                            "accountValid",
+                            1234
+                        ],
+                        "side": "BUY"
+                    }
+                ],
+                "description": "test ValidTradeOrder CreatesTrade"
+            },
+            {
+                "inputs": [
+                    {
+                        "id": "1234",
+                        "security": [
+                            "tickerInvalid"
+                        ],
+                        "quantity": 1000,
+                        "accountId": [
+                            "accountValid",
+                            12345
+                        ],
+                        "side": "BUY"
+                    }
+                ],
+                "expectedOutput": [
+                    "err",
+                    [
+                        "tickerNotFound"
+                    ]
+                ],
+                "description": "testTradeOrderWithInvalidTickerThrowsException"
+            }
+        ]
+    ]
+]

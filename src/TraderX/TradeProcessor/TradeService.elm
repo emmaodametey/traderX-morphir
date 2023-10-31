@@ -7,8 +7,6 @@ module TraderX.TradeProcessor.TradeService exposing (..)
 -- callculate for new quantity
 --if order side == Buy, return orderQuantity * 1 elif sell:
 -- orderQuantity * -1
---after save, update status of trade to processing
--- after processing, change state to settled
 --return tradebookingresult
 
 type alias TradeOrder =
@@ -30,7 +28,7 @@ type alias Trade =
     , quantity : Int
     , accountId : Int
     , side : TradeSide
-    , state : TradeState --change back to state
+    , state : TradeState
     , updated : String 
     , created : String
     }
@@ -54,14 +52,6 @@ type TradeState
 type TradeSide 
     = Buy
     | Sell
-
--- findByAccountIdAndSecurity : TradeOrder.accountId -> TradeOrder.security -> Maybe Position
--- findByAccountIdAndSecurity accountId security =
-
-selectPosition : PositionStatus -> Maybe Position
-selectPosition status =
-    Nothing
-
 
 calculateQuantity: TradeSide -> Int -> Int
 calculateQuantity side tradeQuantity = 

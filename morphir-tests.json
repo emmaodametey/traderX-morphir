@@ -202,6 +202,74 @@
                     }
                 ],
                 "description": ""
+            },
+            {
+                "inputs": [
+                    {
+                        "id": "123",
+                        "security": [
+                            "tickerValid",
+                            "MSFT"
+                        ],
+                        "quantity": 1000,
+                        "accountId": [
+                            "accountInvalid"
+                        ],
+                        "side": "BUY"
+                    }
+                ],
+                "expectedOutput": [
+                    "err",
+                    [
+                        "accountNotFound"
+                    ]
+                ],
+                "description": "Account invalid"
+            },
+            {
+                "inputs": [
+                    {
+                        "id": "223",
+                        "security": [
+                            "tickerInvalid"
+                        ],
+                        "quantity": 111,
+                        "accountId": [
+                            "accountValid",
+                            111
+                        ],
+                        "side": "SELL"
+                    }
+                ],
+                "expectedOutput": [
+                    "err",
+                    [
+                        "tickerNotFound"
+                    ]
+                ],
+                "description": "Ticker invalid"
+            },
+            {
+                "inputs": [
+                    {
+                        "id": "1234",
+                        "security": [
+                            "tickerInvalid"
+                        ],
+                        "quantity": 1000,
+                        "accountId": [
+                            "accountInvalid"
+                        ],
+                        "side": "SELL"
+                    }
+                ],
+                "expectedOutput": [
+                    "err",
+                    [
+                        "tickerNotFound"
+                    ]
+                ],
+                "description": "Account and Ticker Invalid"
             }
         ]
     ]

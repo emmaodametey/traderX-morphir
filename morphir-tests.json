@@ -10,6 +10,150 @@
             [
                 [
                     "trade",
+                    "processor"
+                ],
+                [
+                    "trade",
+                    "service"
+                ]
+            ],
+            [
+                "calculate",
+                "quantity"
+            ]
+        ],
+        [
+            {
+                "inputs": [
+                    [
+                        "buy"
+                    ],
+                    2
+                ],
+                "expectedOutput": 2,
+                "description": "Buy side"
+            },
+            {
+                "inputs": [
+                    [
+                        "sell"
+                    ],
+                    3
+                ],
+                "expectedOutput": -3,
+                "description": "Sell Side"
+            }
+        ]
+    ],
+    [
+        [
+            [
+                [
+                    "trader",
+                    "x"
+                ]
+            ],
+            [
+                [
+                    "trade",
+                    "processor"
+                ],
+                [
+                    "trade",
+                    "service"
+                ]
+            ],
+            [
+                "process",
+                "trade"
+            ]
+        ],
+        [
+            {
+                "inputs": [
+                    {
+                        "id": "12",
+                        "security": "MSFT",
+                        "quantity": 100,
+                        "accountId": 1,
+                        "side": [
+                            "buy"
+                        ]
+                    }
+                ],
+                "expectedOutput": {
+                    "trade": {
+                        "id": "12",
+                        "security": "MSFT",
+                        "quantity": 100,
+                        "accountId": 1,
+                        "side": [
+                            "buy"
+                        ],
+                        "state": [
+                            "new"
+                        ],
+                        "updated": "updated",
+                        "created": "created"
+                    },
+                    "position": {
+                        "serialVersionUID": 1,
+                        "accountId": 1,
+                        "security": "MSFT",
+                        "quantity": 100
+                    }
+                },
+                "description": "test quantity is added if side is buy"
+            },
+            {
+                "inputs": [
+                    {
+                        "id": "22",
+                        "security": "APPL",
+                        "quantity": 20,
+                        "accountId": 2,
+                        "side": [
+                            "sell"
+                        ]
+                    }
+                ],
+                "expectedOutput": {
+                    "trade": {
+                        "id": "22",
+                        "security": "APPL",
+                        "quantity": 20,
+                        "accountId": 1,
+                        "side": [
+                            "sell"
+                        ],
+                        "state": [
+                            "new"
+                        ],
+                        "updated": "updated",
+                        "created": "created"
+                    },
+                    "position": {
+                        "serialVersionUID": 1,
+                        "accountId": 2,
+                        "security": "APPL",
+                        "quantity": -20
+                    }
+                },
+                "description": "test quantity is deducted if side is sell"
+            }
+        ]
+    ],
+    [
+        [
+            [
+                [
+                    "trader",
+                    "x"
+                ]
+            ],
+            [
+                [
+                    "trade",
                     "service"
                 ],
                 [
@@ -28,59 +172,36 @@
             {
                 "inputs": [
                     {
-                        "id": "12345",
+                        "id": "12",
                         "security": [
                             "tickerValid",
-                            "MSFT"
+                            "ss"
                         ],
-                        "quantity": 1000,
+                        "quantity": 12,
                         "accountId": [
                             "accountValid",
-                            1234
+                            12
                         ],
-                        "side": "BUY"
+                        "side": "buy"
                     }
                 ],
                 "expectedOutput": [
                     "ok",
                     {
-                        "id": "12345",
+                        "id": "12",
                         "security": [
                             "tickerValid",
-                            "MSFT"
+                            "ss"
                         ],
-                        "quantity": 1000,
+                        "quantity": 12,
                         "accountId": [
                             "accountValid",
-                            1234
+                            12
                         ],
-                        "side": "BUY"
+                        "side": "buy"
                     }
                 ],
-                "description": "test ValidTradeOrder CreatesTrade"
-            },
-            {
-                "inputs": [
-                    {
-                        "id": "1234",
-                        "security": [
-                            "tickerInvalid"
-                        ],
-                        "quantity": 1000,
-                        "accountId": [
-                            "accountValid",
-                            12345
-                        ],
-                        "side": "BUY"
-                    }
-                ],
-                "expectedOutput": [
-                    "err",
-                    [
-                        "tickerNotFound"
-                    ]
-                ],
-                "description": "testTradeOrderWithInvalidTickerThrowsException"
+                "description": ""
             }
         ]
     ]

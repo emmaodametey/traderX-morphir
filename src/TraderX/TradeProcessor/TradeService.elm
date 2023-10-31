@@ -43,7 +43,6 @@ type alias Position =
     , accountId : Int
     , security : String
     , quantity : Int
-    , updated : String 
     }
 
 type TradeState
@@ -56,14 +55,23 @@ type TradeSide
     = Buy
     | Sell
 
-findByAccountIdAndSecurity : TradeOrder.accountId -> TradeOrder.security -> Maybe Position
-findByAccountIdAndSecurity accountId security =
+-- findByAccountIdAndSecurity : TradeOrder.accountId -> TradeOrder.security -> Maybe Position
+-- findByAccountIdAndSecurity accountId security =
 
 selectPosition : PositionStatus -> Maybe Position
 selectPosition status =
     Nothing
 
-processTrade : TradeOrder -> Maybe TradeBookingResult
+
+calculateQuantity: TradeSide -> Int -> Int
+calculateQuantity side tradeQuantity = 
+    if side == Buy then
+        tradeQuantity * 1
+    else
+        tradeQuantity * -1
+
+
+processTrade : TradeOrder -> TradeBookingResult
 processTrade order = 
     let 
         trade = 
@@ -76,9 +84,20 @@ processTrade order =
             , updated = "updated"
             , created = "created"
             }
+
+        position = 
+            { serialVersionUID = 1
+            , accountId = order.accountId
+            , security = order.security
+            , quantity = calculateQuantity order.side order.quantity
+            }
     in
-    Nothing
-    
+    { trade = trade
+    , position = position
+    }
+
+
+
 
 
 
